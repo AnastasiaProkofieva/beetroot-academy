@@ -42,13 +42,17 @@ echo "<br />";
 //$assoc = [];
 //$assoc['name'] = $name;
 //var_dump($assoc);
+$user =[];
 $user = [
     'name'=> 'Nastya',
     'surname' => 'Prokofieva',
-    'year'=>'1989',
-    'livedDays' => '(($year - $age) * 365)',
     ];
+$user['year'] = $year;
+$user['age'] = $age;
+$user['livedDays'] = $livedDays;
 echo "My name is {$user['name']} {$user['surname']} was born in {$user['year']}";
-echo "<br />";
-echo "I lived  {$user['livedDays']} days";
+
+//echo "I lived  {$user['livedDays']} days";
+
+
 

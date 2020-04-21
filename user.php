@@ -1,4 +1,17 @@
 <?php
+
+if (!empty ($_POST)) {
+    $error = '';
+    if (empty($_POST['name'])){
+        $error =  'имя не может быть пустым';
+    }
+    if (empty($_POST['surname'])){
+        $error =  'фамилия не может быть пустым';
+    }
+    if (empty($_POST['age']) ){
+        $error =  'фамилия не может быть пустым';
+    }
+}
 $name = 'Petya';
 $surname = 'Petrov';
 $age = '25';
@@ -17,6 +30,7 @@ var_dump($_GET);
 <br />
 <h1>Your Name <?=$_POST['name']?> and your gender <?=$_POST['gender'][0] ?></h1>
 <div class="container">
+    <h3></h3>
 <form method="post" action="user.php">
     <div class="form-group">
         <label for="formGroupExampleInput">Name</label>
