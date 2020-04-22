@@ -1,10 +1,5 @@
 <?php
-$login = 'petya';
-$password = 'qwerty2015';
-$mail = 'petyaP@mail.com';
-$language = ['English','Russian', 'Ukrainian'];
 var_dump($_POST);
-var_dump($_GET);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +24,7 @@ var_dump($_GET);
 </style>
 <body>
 <br>
-<div class="info"> <br>Your login information <br> Login: <?=$_POST['login']?> <br>Password: <?=$_POST['password']?>  <br>E-Mail: <?=$_POST['mail']?> <br>Selected language: <?=$_POST['language'][0] ?> <br></div>
+<div class="info"> <br>Your login information <br> Login: <?=$_POST['login']?> <br>Password: <?=$_POST['password']?>  <br>E-Mail: <?=$_POST['mail']?> <br>Selected language: <?=$_POST['language'] ?> <br></div>
 <div class="container">
     <form method="post" action="registration.php">
         <div class="form-group">
@@ -46,10 +41,10 @@ var_dump($_GET);
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Language</label>
-            <select  class="form-control" id="exampleFormControlSelect1" name="language[]" >
-                <option <?=$_POST['language']=='English' ? 'selected' :" "?> >English</option>
-                <option <?=$_POST['language']=='Russian' ? 'selected' :" "?> selected>Russian</option>
-                <option <?=$_POST['language']=='Ukrainian' ? 'selected' :" "?>>Ukrainian</option>
+            <select  class="form-control" id="exampleFormControlSelect1" name="language" >
+                <option <?=$_POST['language']=='English'? 'selected':" "?>  >English</option>
+                <option <?=$_POST['language']=='Russian'? 'selected':" "?> >Russian</option>
+                <option <?=$_POST['language']=='Ukrainian'? 'selected':" "?>>Ukrainian</option>
             </select>
         </div>
         <button type="submit" class="btn btn-outline-dark">Submit</button>
