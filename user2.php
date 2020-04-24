@@ -35,6 +35,24 @@ switch ($lang){
         $translation = $labels['en'];
         break;
 }
+// array_
+//$ages=array_column($users, 'age');
+//$key=array_search(75,$ages);
+//if ($key){
+// echo "The Age found";
+//}else{
+//    echo "NOT FOUND";
+//}
+////var_dump($names);
+//var_dump($ages);
+//echo "<br>";
+//sort($ages);
+//echo "<br>";
+//var_dump($ages);
+//echo "<br>";
+//var_dump(max($ages));
+//exit();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +71,7 @@ switch ($lang){
         <a href="?lang=ua" class="badge badge-secondary">Украинский</a>
         <a href="?lang=en" class="badge badge-success">Английский</a>
     </div>
-    <form method="post" action="test.php">
+    <form method="post" action="stats.php">
         <div class="form-group">
             <label for="formGroupExampleInput"><?=$translation ['name']?></label>
             <input type="text" class="form-control" id="formGroupExampleInput" name="name" placeholder="Example input"
@@ -95,11 +113,13 @@ switch ($lang){
             <?php endif;?>
         </div>
         <div class="form-group">
+
             <label for="exampleFormControlSelect1"><?=$translation ['gender']?></label>
             <select  class="form-control" id="exampleFormControlSelect1" name="gender[]">
-                <option>Man</option>
-                <option>Woman</option>
-                <option>Others</option>
+                <?=$gender= empty($_POST['gender']) ? 'others' :$_POST['gender']?>
+                <option<?=$gender =='Man'? 'selected':" "?>>Man</option>
+                <option <?=$gender =='Woman'? 'selected':" "?>>Woman</option>
+                <option <?=$gender =='Others'? 'selected':" "?>>Others</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Отправить</button>

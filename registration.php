@@ -42,9 +42,10 @@ var_dump($_POST);
         <div class="form-group">
             <label for="exampleFormControlSelect1">Language</label>
             <select  class="form-control" id="exampleFormControlSelect1" name="language" >
-                <option <?=$_POST['language']=='English'? 'selected':" "?>  >English</option>
-                <option <?=$_POST['language']=='Russian'? 'selected':" "?> >Russian</option>
-                <option <?=$_POST['language']=='Ukrainian'? 'selected':" "?>>Ukrainian</option>
+                <?=$language = empty($_POST['language']) ? 'Russian' :$_POST['language']?>
+                <option <?=$language =='English'? 'selected':" "?>  >English</option>
+                <option <?=$language =='Russian'? 'selected':" "?> >Russian</option>
+                <option <?=$language =='Ukrainian'? 'selected':" "?>>Ukrainian</option>
             </select>
         </div>
         <button type="submit" class="btn btn-outline-dark">Submit</button>
