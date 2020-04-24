@@ -63,7 +63,7 @@ echo NEW_LINE;
 $maxAgeAllId = array_keys($ages,$maxAge);
 //$oldUsers = array();
  foreach ($maxAgeAllId as $oldUsers)
-{ echo $oldUsers = $users[$oldUsers]['name']. ",". " " ;
+{ echo $users[$oldUsers]['name']. ",". " " ;
 }
 ?>
 
@@ -97,7 +97,7 @@ $maxAgeAllId = array_keys($ages,$maxAge);
 <div class="container">
     <ul>
         <li>1) Самый старый пользователь: <?=$oldestUser['name']. " " . $oldestUser['surname']." ". $oldestUser['age']?></li>
-        <li>2) Самые старые пользователи: <?php foreach ($maxAgeAllId as $oldUsers){ echo $oldUsers = $users[$oldUsers]['name']. "," ;}?></li>
+        <li>2) Самые старые пользователи: <?php foreach ($maxAgeAllId as $oldUsers){ echo $users[$oldUsers]['name']. "," ;}?></li>
         <li>3) Общеее кол-во юзеров: <?=count($users)?></li>
         <li>4) Питомцы юзера <?=$users[$userMerkelId]['surname']?> :
             <ul>
