@@ -6,3 +6,5 @@ test.php
 index.php
 test2.php
 test.php
+tmp/*
+!tmp/.gitkeep

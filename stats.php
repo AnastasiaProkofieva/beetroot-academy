@@ -3,6 +3,9 @@ error_reporting(E_ALL);
 ini_set('display_errors',true);
 
 require './functions.php';
+opcache_reset();
+$users= require 'db.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +18,7 @@ require './functions.php';
     .avatar{
         width: auto ;
         height: auto;
-        max-height:50px;
+        max-width: 60px;
         background-size: cover;
         background-position: center;
     }
@@ -30,8 +33,16 @@ require './functions.php';
 </style>
 <body>
 <br/>
-<h1 class="title">Статистика</h1>
+
 <div class="container">
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand" href="export.php">Экспорт</a>
+        <form class="form-inline" method="post" enctype="multipart/form-data" action="import.php">
+            <input class="form-control mr-sm-2" type="file"  name="import" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Загрузить</button>
+        </form>
+    </nav>
+    <h1 class="title">Статистика</h1>
     <ul>
         <li>1) Самый старый пользователь: <?=$oldestUser['name']. " " . $oldestUser['surname']." ". $oldestUser['age']?></li>
         <li>2) Самые старые пользователи: <?php foreach ($maxAgeAllId as $oldUsers){ echo $users[$oldUsers]['name']. "," ;}?></li>
@@ -46,12 +57,12 @@ require './functions.php';
     <table class="table table-sm">
         <thead>
         <tr >
-            <th><a href="?sort=id&order=asc"><?=!empty($_GET['order']) && $_GET['order'] == 'desc' ? 'asc': 'desc'?>#</a></th>
-            <th><a href="?sort=name">Name</a></th>
-            <th><a href="?sort=surname">Surname</a></th>
-            <th><a href="?sort=age">Age</a></th>
-            <th><a href="?sort=gender">Gender</a></th>
-            <th><a href="?sort=avatar">Avatar</a></th>
+            <th><a href="?sort=id&order=<?=!empty($_GET['order']) && $_GET['order'] == 'desc' ? 'asc': 'desc'?>">#</a></th>
+            <th><a href="?sort=name&order=<?=!empty($_GET['order']) && $_GET['order'] == 'desc' ? 'asc': 'desc'?>">Name</a></th>
+            <th><a href="?sort=surname&order=<?=!empty($_GET['order']) && $_GET['order'] == 'desc' ? 'asc': 'desc'?>">Surname</a></th>
+            <th><a href="?sort=age&order=<?=!empty($_GET['order']) && $_GET['order'] == 'desc' ? 'asc': 'desc'?>">Age</a></th>
+            <th><a href="?sort=gender&order=<?=!empty($_GET['order']) && $_GET['order'] == 'desc' ? 'asc': 'desc'?>">Gender</a></th>
+            <th><a href="?sort=avatar&order=<?=!empty($_GET['order']) && $_GET['order'] == 'desc' ? 'asc': 'desc'?>">Avatar</a></th>
         </tr>
         </thead>
         <tbody>
@@ -73,15 +84,15 @@ require './functions.php';
     <select name="filter">
         <option value="man">Только мужчины</option>
         <option value="woman">Только женщины</option>
-        <option value="covid">60</option>
+        <option value="covid">Риск ковид age  > 60</option>
         <?php foreach ($animalsFilter as $animal):?>
-        <option value="<?$animal?>"><?$animal?></option>
+        <option value="<?=$animal?>"><?=$animal?></option>
         <?php endforeach; ?>
     </select>
         <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
     <br>
-    <a href="user2.php">users2</a>
+    <a href="user2.php">Страница регистрации</a>
 </div>
 </body>
 </html>
