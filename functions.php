@@ -2,6 +2,7 @@
 define('NEW_LINE', '<br>');
 define('SURNAME_MERKEL', 'Merkel');
 define('JACK_NAME', 'Jack');
+define('SESSION_INTERVAL', 2 * 60);
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 var_dump($_POST);
@@ -68,6 +69,8 @@ function createUser(array $data = [])
     opcache_invalidate('db.php');
     $users = require 'db.php';
     $user = empty($data) ? $_POST : $data;
+    $emails = array_column($users, 'email');
+
     $error = [];
     if (empty($user['name'])) {
         $error['name'] = 'Имя не может пустым';
@@ -75,12 +78,16 @@ function createUser(array $data = [])
     if (empty($user['surname'])) {
         $error['surname'] = 'Фамилия не может пустой';
     }
-    if (empty($user['age']) || $_POST['age'] < 1) {
+    if (empty($user['age']) || $user['age'] < 1) {
         $error['age'] = 'Возраст задан некорректно';
     }
     if (empty($user['email'])) {
         $error['email'] = 'Email не может пустой';
     }
+//elseif (false !== array_search($user['email'], $emails)){
+//        $error['email'] = 'Пользователь с таким email уже зарегистрирован';
+//    }
+
     if (!empty($error)) {
         return $error;
     }
@@ -154,5 +161,19 @@ if (!empty($_GET['filter'])) {
     }
 }
 
+function initSession()
+{
+    session_start();
+    $time = $_SESSION['created_at'] ?? 0;
+    $currentTime = time() - $time;
+    if ($currentTime > SESSION_INTERVAL) {
+        logout();
+    }
+}
 
+function logout()
+{
+    session_destroy();
+    header('Location:/auth.php');
 
+}

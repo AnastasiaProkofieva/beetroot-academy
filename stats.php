@@ -1,8 +1,11 @@
 <?php
+
 error_reporting(E_ALL);
 ini_set('display_errors',true);
 
 require './functions.php';
+initSession();
+//require 'import.php';
 opcache_reset();
 $users= require 'db.php';
 
@@ -37,6 +40,7 @@ $users= require 'db.php';
 <div class="container">
     <nav class="navbar navbar-light bg-light justify-content-between">
         <a class="navbar-brand" href="export.php">Экспорт</a>
+        <a class="navbar-brand" href="logout.php">Выйти</a>
         <form class="form-inline" method="post" enctype="multipart/form-data" action="import.php">
             <input class="form-control mr-sm-2" type="file"  name="import" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Загрузить</button>

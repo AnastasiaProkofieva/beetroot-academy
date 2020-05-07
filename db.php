@@ -58,18 +58,5 @@ return array (
       2 => 'horse',
     ),
   ),
-  4 => 
-  array (
-    'name' => 'Mike',
-    'surname' => 'Kardakov',
-    'age' => '75',
-    'email' => 'example@gmail.com',
-    'password' => 'qwerty2015',
-    'gender' => 'Others',
-    'animals' => 
-    array (
-    ),
-    'avatar' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRiVQOI8aNHpbsyt-kt7BYmzp7tOh24AnYMB30kG3gV5lQuKYZ_&usqp=CAU',
-  ),
 
 ) ; 

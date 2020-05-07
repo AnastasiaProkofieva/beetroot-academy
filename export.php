@@ -1,8 +1,10 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors',true);
-
+require 'functions.php';
 $users = require_once 'db.php';
+initSession();
+
 $exportFileName = "./tmp/export.csv";
 $file = fopen($exportFileName, 'w');
 $headers= array_keys(current($users));
