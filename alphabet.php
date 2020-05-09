@@ -59,3 +59,26 @@ for ($i=ord('z'); $i<=ord('a'); $i--) {
     }
 
 }
+//function initSession(array $users)
+//{
+//    foreach ($users as $user) {
+//        if ($user['email'] === $_POST['email'] && $user['password'] === $_POST['password']) {
+//            session_start();
+//            $_SESSION ['user']= $user;
+//            $_SESSION['created_at'] = time();
+//            setcookie('my-cookieSt', ++$_COOKIE['my-cookieSt'] ?? 1, time()+86400);
+//            header('Location:/stats.php');
+//            exit;
+//        }
+//
+//    }
+//
+//}
+//function setCookie (array $users){
+//    session_start();
+//    foreach ($users as $key=>$value)
+//
+//        $user ['cookie'] = setcookie('my-cookie', ++$_COOKIE['my-cookie'] ?? 1, time()+86400);
+//
+//
+//}

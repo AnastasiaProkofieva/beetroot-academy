@@ -2,10 +2,10 @@
 define('NEW_LINE', '<br>');
 define('SURNAME_MERKEL', 'Merkel');
 define('JACK_NAME', 'Jack');
-define('SESSION_INTERVAL', 2 * 60);
+define('SESSION_INTERVAL', 5 * 60);
 error_reporting(E_ALL);
 ini_set('display_errors', true);
-var_dump($_POST);
+//var_dump($_POST);
 
 
 function helloWorld($username): string
@@ -23,35 +23,36 @@ if (!empty($_POST)) {
             $errorString .= "error[$key]=$message&";
         }
         header('Location: /user2.php?' . $errorString);
+        exit();
     }
 }
 $ages = array_column($users, 'age');
-var_dump($ages);
+//var_dump($ages);
 $maxAge = max($ages);
 $maxAgeId = array_search($maxAge, $ages);
-echo "<br>";
-var_dump($maxAgeId);
+//echo "<br>";
+//var_dump($maxAgeId);
 $oldestUser = $users[$maxAgeId];
 $userName = array_column($users, 'name');
-var_dump($userName);
+//var_dump($userName);
 $userJackId = array_search(JACK_NAME, $userName);
-print_r($users[$userJackId]);
-echo "<br>";
+//print_r($users[$userJackId]);
+//echo "<br>";
 $randomUserId = rand(0, count($users) - 1);
 $randomUser = $users[$randomUserId];
-echo NEW_LINE;
+//echo NEW_LINE;
 $userSurname = array_column($users, 'surname');
 $userMerkelId = array_search(SURNAME_MERKEL, $userSurname);
 $merkelAnimals = $users[$userMerkelId]['animals'];
 asort($merkelAnimals);
-print_r($merkelAnimals);
-echo NEW_LINE;
+//print_r($merkelAnimals);
+//echo NEW_LINE;
 $maxAgeAllId = array_keys($ages, $maxAge);
-$oldUsers = array();
+//$oldUsers = array();
 //foreach ($maxAgeAllId as $oldUsers) {
 //    echo $users[$oldUsers]['name'] . "," . " ";
 //}
-echo NEW_LINE;
+//echo NEW_LINE;
 function sortFieldsAnother($userA, $userB)
 {
     $order = $_GET['order'] ?? 'asc';
@@ -83,16 +84,15 @@ function createUser(array $data = [])
     }
     if (empty($user['email'])) {
         $error['email'] = 'Email не может пустой';
+    } elseif (false !== array_search($user['email'], $emails)) {
+        $error['email'] = 'Пользователь с таким email уже зарегистрирован';
     }
-//elseif (false !== array_search($user['email'], $emails)){
-//        $error['email'] = 'Пользователь с таким email уже зарегистрирован';
-//    }
 
     if (!empty($error)) {
         return $error;
     }
-    $user ['animals'] = [];
     $user ['avatar'] = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRiVQOI8aNHpbsyt-kt7BYmzp7tOh24AnYMB30kG3gV5lQuKYZ_&usqp=CAU';
+    $user ['animals'] = [];
     $users[] = $user;
     $content = "<?php" . PHP_EOL;
     $content = $content . "return " . var_export($users, 1);
@@ -169,6 +169,7 @@ function initSession()
     if ($currentTime > SESSION_INTERVAL) {
         logout();
     }
+
 }
 
 function logout()
@@ -177,3 +178,4 @@ function logout()
     header('Location:/auth.php');
 
 }
+

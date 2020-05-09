@@ -8,11 +8,9 @@ foreach ($users as $user) {
         session_start();
         $_SESSION ['user']= $user;
         $_SESSION['created_at'] = time();
-        setcookie('my-cookie', ++$_COOKIE['my-cookie'] ?? 1, time())+3600;
+        setcookie('my-cookieSt', ++$_COOKIE['my-cookieSt'] ?? 1, time()+86400);
         header('Location:/stats.php');
         exit;
-    }else{
-        header('Location:/user2.php');
     }
 
 }

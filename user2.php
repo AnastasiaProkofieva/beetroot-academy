@@ -41,6 +41,7 @@ switch ($lang) {
 //echo "<br>";
 //var_dump(max($ages));
 //exit();
+//<h3 style="color:red"><?= implode("<br>", $error)?<!--</h3>-->
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +55,7 @@ switch ($lang) {
 <br/>
 <h1>Форма регистрации</h1>
 <div class="container">
-    <h3 style="color:red"><?= implode("<br>", $error) ?></h3>
+
     <div class="float-right">
         <a href="?lang=ru" class="badge badge-primary">Русский</a>
         <a href="?lang=ua" class="badge badge-secondary">Украинский</a>
@@ -92,6 +93,20 @@ switch ($lang) {
             <?php endif; ?>
         </div>
         <div class="form-group">
+            <label for="exampleFormControlSelect1"><?= $translation ['gender'] ?></label>
+            <select class="form-control" id="exampleFormControlSelect1" name="gender">
+                <?= $gender = empty($_POST['gender']) ? 'Others' : $_POST['gender'] ?>
+                <option<?= $gender == 'Man' ? 'selected' : " " ?>>Man</option>
+                <option <?= $gender == 'Woman' ? 'selected' : " " ?>>Woman</option>
+                <option <?= $gender == 'Others' ? 'selected' : " " ?>>Others</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Password</label>
+            <input type="password" maxlength="10" class="form-control" id="formGroupExampleInput" name="password" placeholder="Enter password"
+                   value="<?=$_POST['password'] ?? 'qwerty2015' ?>" required>
+        </div>
+        <div class="form-group">
             <label for="formGroupExampleInput"><?= $translation ['email'] ?></label>
             <input type="email" class="form-control" id="formGroupExampleInput" name="email" placeholder="Example input"
                    value="<?= $_POST['email'] ?? 'example@gmail.com' ?>">
@@ -100,20 +115,6 @@ switch ($lang) {
                     <?= $error['email'] ?>
                 </small>
             <?php endif; ?>
-        </div>
-        <div class="form-group">
-            <label for="formGroupExampleInput">Password</label>
-            <input type="password" maxlength="10" class="form-control" id="formGroupExampleInput" name="password" placeholder="Enter password"
-                   value="<?=$_POST['password'] ?? 'qwerty2015' ?>" required>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlSelect1"><?= $translation ['gender'] ?></label>
-            <select class="form-control" id="exampleFormControlSelect1" name="gender">
-                <?= $gender = empty($_POST['gender']) ? 'Others' : $_POST['gender'] ?>
-                <option<?= $gender == 'Man' ? 'selected' : " " ?>>Man</option>
-                <option <?= $gender == 'Woman' ? 'selected' : " " ?>>Woman</option>
-                <option <?= $gender == 'Others' ? 'selected' : " " ?>>Others</option>
-            </select>
         </div>
         <button type="submit" class="btn btn-primary">Отправить</button>
     </form>

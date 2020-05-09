@@ -6,7 +6,7 @@ return array (
     'surname' => 'Martin',
     'age' => 75,
     'gender' => 'man',
-    'password' => '123546',
+    'password' => '123456',
     'email' => 'martin@gmail.com',
     'avatar' => 'https://i.ytimg.com/vi/sDnPs_V8M-c/hqdefault.jpg',
     'animals' => 
@@ -34,9 +34,9 @@ return array (
     'name' => 'Jack',
     'surname' => 'Sparrow',
     'age' => 45,
-    'email' => 'jack@gmail.com',
     'gender' => 'man',
     'password' => '12345678',
+    'email' => 'jack@gmail.com',
     'avatar' => 'https://pbs.twimg.com/profile_images/427547618600710144/wCeLVpBa_400x400.jpeg',
     'animals' => 
     array (
@@ -47,9 +47,9 @@ return array (
     'name' => 'Angela',
     'surname' => 'Merkel',
     'age' => 65,
-    'email' => 'fallenangel666@gmail.com',
     'gender' => 'woman',
     'password' => 'aaa111',
+    'email' => 'fallenangel666@gmail.com',
     'avatar' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Besuch_Bundeskanzlerin_Angela_Merkel_im_Rathaus_K%C3%B6ln-09916.jpg/330px-Besuch_Bundeskanzlerin_Angela_Merkel_im_Rathaus_K%C3%B6ln-09916.jpg',
     'animals' => 
     array (
@@ -58,5 +58,17 @@ return array (
       2 => 'horse',
     ),
   ),
-
+  4 => 
+  array (
+    'name' => 'VASYA',
+    'surname' => 'pupkin',
+    'age' => '33',
+    'gender' => 'Man',
+    'password' => 'qwerty2015',
+    'email' => 'vasya7@gmail.com',
+    'avatar' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRiVQOI8aNHpbsyt-kt7BYmzp7tOh24AnYMB30kG3gV5lQuKYZ_&usqp=CAU',
+    'animals' => 
+    array (
+    ),
+  ),
 ) ; 

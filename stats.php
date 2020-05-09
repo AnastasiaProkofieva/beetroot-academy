@@ -2,7 +2,6 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors',true);
-
 require './functions.php';
 initSession();
 //require 'import.php';
@@ -33,11 +32,34 @@ $users= require 'db.php';
     .tableTitle{
         text-align: left;
     }
+    .card{
+        color: black;
+        background-color: lightgray;
+        color: crimson;
+        font-weight: bold;
+        text-align: center;
+    }
+    .list-group-item{
+        color: blue;
+    }
+
 </style>
 <body>
 <br/>
 
 <div class="container">
+    <div class="card" style="width: 22rem;">
+        <div class="card-header"><?= "Current user: ". $_SESSION['user']['name'] . " ". $_SESSION['user']['surname']?></div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><?= "Кол-во посещений страницы: ". $_COOKIE['my-cookieSt']?></li>
+            <li class="list-group-item"><?= "Кол-во экспортированных файлов: ". (!empty($_COOKIE['my-cookieEx']) ? $_COOKIE['my-cookieEx'] : "0")?></li>
+            <li class="list-group-item"><?= "Кол-во импортированных файлов: ". (!empty($_COOKIE['my-cookieIm']) ? $_COOKIE['my-cookieIm'] : "0")?></li>
+        </ul>
+    </div>
+    <br/>
+    <?php if(!empty($_GET['import'])): ?>
+        <span style="color: green; float: right">Файл успешно загружен!</span><br/>
+    <?php endif; ?>
     <nav class="navbar navbar-light bg-light justify-content-between">
         <a class="navbar-brand" href="export.php">Экспорт</a>
         <a class="navbar-brand" href="logout.php">Выйти</a>
